@@ -27,20 +27,15 @@ DISTRICTS = [
 
 # Feature order - MUST match the exact order used during model training
 FEATURE_ORDER = [
-    # Weather Features
-    "prev_avg_temp",
-    "prev_avg_precipitation",
-    "prev_avg_humidity",
     "weekly_avg_temp",
     "weekly_avg_humidity",
     "weekly_avg_precipitation",
-    
-    # Lag Features
+    "prev_avg_temp",
+    "prev_avg_humidity",
+    "prev_avg_precipitation",
     "No. of Cases_lag_1",
     "No. of Cases_lag_2",
     "cases_roll2",
-    
-    # Demographic & WASH Features
     "Number of households",
     "Population",
     "Area",
@@ -59,16 +54,27 @@ FEATURE_ORDER = [
     "Children with diarrhoea who received ORS (%)",
     "Children with diarrhoea who received zinc (%)",
     "Children with diarrhoea taken to a health facility (%)",
-    
-    # Disease One-Hot Encoded Columns
-    "Disease_nan",
-    "Disease_Cholera",
     "Disease_Acute Diarrheal Disease",
-    "Disease_Food Poisoning",
-    "Disease_Human Rabies",
+    "Disease_Acute Diarrheal Diseases",
+    "Disease_Acute Gastroenteritis",
+    "Disease_Chickenpox",
+    "Disease_Chikungunya",
+    "Disease_Cholera",
     "Disease_Dengue",
-    "Disease_Zika Virus",
+    "Disease_Fever",
+    "Disease_Food Poisoning",
+    "Disease_Hand Foot Mouth Disease (HFMD)",
+    "Disease_Hepatitis A",
+    "Disease_Human Rabies",
+    "Disease_Japanese Encephalitis",
     "Disease_Kyasanur Forest Disease",
+    "Disease_Leptospirosis",
+    "Disease_Malaria",
+    "Disease_Measles",
+    "Disease_Mumps",
+    "Disease_Typhoid",
+    "Disease_Zika Virus",
+    "Disease_nan"
 ]
 
 # Simulation ranges for realistic data generation
@@ -115,14 +121,27 @@ SIMULATION_RANGES = {
 
 # Disease frequency distribution (for realistic one-hot selection)
 DISEASE_FREQUENCIES = {
-    "Disease_nan": 0.10,
-    "Disease_Cholera": 0.08,
-    "Disease_Acute Diarrheal Disease": 0.40,
-    "Disease_Food Poisoning": 0.20,
-    "Disease_Human Rabies": 0.02,
-    "Disease_Dengue": 0.12,
-    "Disease_Zika Virus": 0.03,
-    "Disease_Kyasanur Forest Disease": 0.05,
+    "Disease_nan": 0.05,
+    "Disease_Cholera": 0.05,
+    "Disease_Acute Diarrheal Disease": 0.20,
+    "Disease_Food Poisoning": 0.10,
+    "Disease_Human Rabies": 0.01,
+    "Disease_Dengue": 0.10,
+    "Disease_Zika Virus": 0.02,
+    "Disease_Kyasanur Forest Disease": 0.02,
+    "Disease_Acute Diarrheal Diseases": 0.05,
+    "Disease_Acute Gastroenteritis": 0.05,
+    "Disease_Chickenpox": 0.05,
+    "Disease_Chikungunya": 0.05,
+    "Disease_Fever": 0.05,
+    "Disease_Hand Foot Mouth Disease (HFMD)": 0.02,
+    "Disease_Hepatitis A": 0.02,
+    "Disease_Japanese Encephalitis": 0.02,
+    "Disease_Leptospirosis": 0.02,
+    "Disease_Malaria": 0.05,
+    "Disease_Measles": 0.02,
+    "Disease_Mumps": 0.02,
+    "Disease_Typhoid": 0.05,
 }
 
 # Outbreak thresholds

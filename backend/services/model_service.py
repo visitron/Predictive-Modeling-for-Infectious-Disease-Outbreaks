@@ -70,6 +70,10 @@ class ModelService:
         # Create DMatrix for XGBoost
         dmatrix = xgb.DMatrix(features)
         
+        # Assign feature names to match model expectation
+        from config import FEATURE_ORDER
+        dmatrix.feature_names = FEATURE_ORDER
+        
         # Get predictions (log-transformed)
         predictions = self.model.predict(dmatrix)
         
