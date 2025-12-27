@@ -1,0 +1,104 @@
+# Backend Python
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.so
+backend/.Python
+backend/build/
+backend/develop-eggs/
+backend/dist/
+backend/downloads/
+backend/eggs/
+backend/.eggs/
+backend/lib/
+backend/lib64/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/wheels/
+backend/pip-wheel-metadata/
+backend/share/python-wheels/
+backend/*.egg-info/
+backend/.installed.cfg
+backend/*.egg
+backend/MANIFEST
+backend/.venv
+backend/venv/
+backend/ENV/
+backend/env/
+backend/.env
+backend/.env.local
+backend/.env.*.local
+
+# Jupyter Notebook
+backend/.ipynb_checkpoints
+
+# PyCharm
+backend/.idea/
+backend/*.iml
+
+# Frontend Node.js
+frontend/node_modules/
+frontend/dist/
+frontend/.dist/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+frontend/.env*.local
+
+# Vite
+frontend/.vite/
+
+# TypeScript
+frontend/*.tsbuildinfo
+
+# ESLint
+frontend/.eslintcache
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# IDE
+.idea/
+.DS_Store
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Model files (if too large)
+# backend/model/*.h5
+# backend/model/*.pkl
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
