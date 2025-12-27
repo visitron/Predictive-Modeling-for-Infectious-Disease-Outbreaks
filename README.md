@@ -46,110 +46,19 @@ The Outbreak Prediction System is a production-ready full-stack application that
 
 ### High-Level Architecture
 
-```mermaid
-graph TB
-    subgraph "Client Layer"
-        A[React Dashboard]
-        B[Mobile Browser]
-    end
-    
-    subgraph "Backend Layer"
-        C[FastAPI Server]
-        D[WebSocket Manager]
-        E[Background Scheduler]
-    end
-    
-    subgraph "Service Layer"
-        F[Prediction Service]
-        G[Simulation Service]
-        H[Model Service]
-    end
-    
-    subgraph "ML Layer"
-        I[XGBoost Booster]
-    end
-    
-    A <-->|WebSocket| D
-    B <-->|WebSocket| D
-    C --> D
-    E --> F
-    F --> G
-    F --> H
-    H --> I
-    D -->|Broadcast| A
-    D -->|Broadcast| B
-    
-    style A fill:#61DAFB,color:#000
-    style B fill:#61DAFB,color:#000
-    style C fill:#009688,color:#fff
-    style I fill:#FF6F00,color:#fff
-```
+![High Level Design](Architecture_diagram/high_level_design.png)
+
+### System Architecture
+
+![System Architecture](Architecture_diagram/system_architecture.png)
+
+### Low-Level Design
+
+![Low Level Design](Architecture_diagram/low_level_design.png)
 
 ### Data Flow Architecture
 
-```mermaid
-sequenceDiagram
-    participant Client as React Client
-    participant WS as WebSocket Manager
-    participant Scheduler as Background Task
-    participant Pred as Prediction Service
-    participant Sim as Simulation Service
-    participant Model as Model Service
-    participant XGB as XGBoost Model
-    
-    Client->>WS: Connect to /ws
-    WS-->>Client: Connection Established
-    
-    loop Every 10 seconds
-        Scheduler->>Pred: Trigger batch prediction
-        
-        loop For each district
-            Pred->>Sim: Generate features
-            Sim-->>Pred: Feature dictionary
-            Pred->>Pred: Convert to ordered vector
-            Pred->>Model: Run inference
-            Model->>XGB: predict(DMatrix)
-            XGB-->>Model: predicted_log
-            Model-->>Pred: raw prediction
-            Pred->>Pred: exp(log) - 1
-            Pred->>Pred: Calculate outbreak_prob
-        end
-        
-        Pred-->>Scheduler: Batch predictions
-        Scheduler->>WS: Broadcast batch
-        WS-->>Client: batch_prediction message
-    end
-```
-
-### Component Architecture
-
-```mermaid
-graph LR
-    subgraph "Frontend Components"
-        App --> Dashboard
-        App --> NotificationSystem
-        App --> LiveLogViewer
-        Dashboard --> DistrictCard
-    end
-    
-    subgraph "Custom Hooks"
-        App --> useWebSocket
-    end
-    
-    subgraph "Backend Services"
-        AppPy[app.py] --> ModelService
-        AppPy --> SimulationService
-        AppPy --> PredictionService
-        AppPy --> WebSocketManager
-        PredictionService --> ModelService
-        PredictionService --> SimulationService
-    end
-    
-    useWebSocket <-.->|WebSocket| WebSocketManager
-    
-    style App fill:#61DAFB,color:#000
-    style AppPy fill:#009688,color:#fff
-```
+![Data Flow Diagram](Architecture_diagram/data_flow_diagram.png)
 
 ---
 
