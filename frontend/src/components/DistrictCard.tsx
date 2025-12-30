@@ -14,6 +14,7 @@ interface DistrictCardProps {
 export const DistrictCard: React.FC<DistrictCardProps> = ({ prediction }) => {
     const {
         district,
+        disease,
         predicted_cases_rounded,
         outbreak_prob,
         outbreak_flag,
@@ -31,9 +32,14 @@ export const DistrictCard: React.FC<DistrictCardProps> = ({ prediction }) => {
         >
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white">
-                    {capitalizeDistrict(district)}
-                </h3>
+                <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-white">
+                        {capitalizeDistrict(district)}
+                    </h3>
+                    <p className="text-xs text-gray-400 mt-1 font-medium">
+                        🦠 {disease}
+                    </p>
+                </div>
                 {outbreak_flag && (
                     <span className="px-3 py-1 text-xs font-bold text-white bg-red-600 rounded-full animate-pulse">
                         OUTBREAK

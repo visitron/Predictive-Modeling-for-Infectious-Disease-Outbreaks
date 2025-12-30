@@ -66,6 +66,22 @@ class PredictionService:
         prob = 1 / (1 + math.exp(-k * (predicted_cases - midpoint)))
         return round(prob, 3)
     
+    def _extract_disease_name(self, features: Dict[str, Any]) -> str:
+        """
+        Extract the disease name from one-hot encoded disease features.
+        
+        Args:
+            features: Dictionary of feature values.
+        
+        Returns:
+            str: Name of the disease with value 1, or "Unknown" if none found.
+        """
+        for feature_name, value in features.items():
+            if feature_name.startswith("Disease_") and value == 1:
+                # Extract disease name by removing "Disease_" prefix
+                return feature_name.replace("Disease_", "")
+        return "Unknown"
+
     def predict_for_district(self, district: str) -> Dict[str, Any]:
         """
         Generate prediction for a single district.
@@ -78,6 +94,9 @@ class PredictionService:
         """
         # Generate simulated features
         features = self.simulation_service.generate_features(district)
+        
+        # Extract disease name for output
+        disease_name = self._extract_disease_name(features)
         
         # Convert to feature vector
         feature_vector = self.features_to_vector(features)
@@ -107,6 +126,7 @@ class PredictionService:
         return {
             "ts": datetime.now(timezone.utc).isoformat(),
             "district": district,
+            "disease": disease_name,
             "predicted_log": round(predicted_log, 3),
             "predicted_cases": round(predicted_cases, 2),
             "predicted_cases_rounded": round(predicted_cases),

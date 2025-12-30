@@ -5,6 +5,7 @@
 export interface Prediction {
     ts: string;
     district: string;
+    disease: string;
     predicted_log: number;
     predicted_cases: number;
     predicted_cases_rounded: number;

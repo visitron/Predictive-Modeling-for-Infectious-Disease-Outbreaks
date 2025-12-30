@@ -3,8 +3,8 @@
  */
 
 // WebSocket configuration
-export const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8001/ws';
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001';
+export const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws';
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 // Outbreak thresholds
 export const OUTBREAK_PROB_THRESHOLD = 0.6;
